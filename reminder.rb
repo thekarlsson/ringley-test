@@ -8,13 +8,13 @@ class Reminder
 
     estates.each do |estate|
       due_date_offset = date.next_month(@rules[estate.charge_period.to_sym])
+      next_due_date = estate.next_due_date(date)
 
-      estate.due_dates.each do |due_date|
-        if due_date_offset >= due_date && date <= due_date
-          estates_in_need_of_reminding << "#{estate.code} due date #{due_date}"
-        end
+      if due_date_offset >= next_due_date && date <= next_due_date
+        estates_in_need_of_reminding << "#{estate.code} due date #{next_due_date}"
       end
     end
+    
     return estates_in_need_of_reminding
   end
 end
