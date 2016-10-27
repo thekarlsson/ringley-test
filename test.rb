@@ -16,6 +16,6 @@ class TestReminder < Minitest::Test
   def test_on
     reminders = ["0066S due date 2016-02-01",
                  "0250S due date 2016-01-23"]
-    assert_equal reminders, @reminder.on(Date.strptime("1 Jan", "%d %b"), @estates)
+    assert_equal reminders, @reminder.on(Date.strptime("1 Jan 2016", "%d %b %Y"), @estates)
   end
 end
