@@ -20,15 +20,7 @@ class Reminder
 
   private
 
-  def last_day_of_month?(date)
-    date.next_day.day == 1
-  end
-
   def offset_date(date, offset)
-    # unless last_day_of_month?(date)
-    #   date.next_month(offset)
-    # else
-      date.next_day.next_month(offset).prev_day
-    # end
+    date.next_day.next_month(offset).prev_day
   end
 end
