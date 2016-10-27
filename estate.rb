@@ -11,11 +11,19 @@ class Estate
 
   def next_due_date(date)
     @due_dates.each do |due_date|
+      due_date = set_year(due_date, date.year)
+
       if due_date >= date
         return due_date
       end
     end
 
-    return @due_dates.first.next_year
+    return set_year(@due_dates.first, date.next_year.year)
+  end
+
+  private
+
+  def set_year(date, year)
+    Date.new(year, date.month, date.day)
   end
 end
