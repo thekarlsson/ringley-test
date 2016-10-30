@@ -25,10 +25,10 @@ class Reminder
   end
 
   def offset_date(date, offset)
-    # unless last_day_of_month?(date)
-    #   date.next_month(offset)
-    # else
+    unless last_day_of_month?(date)
+      date.next_month(offset)
+    else
       date.next_day.next_month(offset).prev_day
-    # end
+    end
   end
 end
